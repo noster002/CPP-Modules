@@ -6,10 +6,11 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:44:46 by nosterme          #+#    #+#             */
-/*   Updated: 2022/04/26 16:30:28 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/04/26 18:55:27 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cmath>
 #include "Fixed.hpp"
 
 Fixed::Fixed( void ) : _fixedPointNbr( 0 )
@@ -28,7 +29,7 @@ Fixed::Fixed( int const number )
 Fixed::Fixed( float const number )
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPointNbr = ( int )( number * ( 1 << this->_fractionalBitNbr ) );
+	this->_fixedPointNbr = roundf( number * ( 1 << this->_fractionalBitNbr ) );
 	return ;
 }
 
