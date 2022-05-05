@@ -6,13 +6,12 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 12:40:10 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/05 13:26:13 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:38:25 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
 int	main( void )
 {

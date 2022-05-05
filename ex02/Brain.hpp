@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:11:59 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/04 15:15:08 by nosterme         ###   ########.fr       */
+/*   Created: 2022/05/04 15:39:03 by nosterme          #+#    #+#             */
+/*   Updated: 2022/05/04 16:12:51 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
-# include "WrongAnimal.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+# include <iostream>
 
-class	WrongCat : public WrongAnimal
+class	Brain
 {
 
 	public:
 
-		WrongCat( void );
-		WrongCat( WrongCat const & other );
-		~WrongCat( void );
+		Brain( void );
+		Brain( Brain const & other );
+		~Brain( void );
 
-		WrongCat&	operator=( WrongCat const & rhs );
+		Brain&				operator=( Brain const & rhs );
 
-		void		makeSound( void ) const;
+		std::string const	getIdea( unsigned int index ) const;
+		void				setIdea( std::string const & idea, unsigned int index );
+
+	private:
+
+		std::string	_idea[100];
 
 };
 
