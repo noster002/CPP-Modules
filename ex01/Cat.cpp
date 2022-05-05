@@ -6,37 +6,52 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:00:04 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/05 12:36:20 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/05 13:11:19 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal()
+Cat::Cat( void ) : Animal(), _brain( new Brain() )
 {
 	this->_type = "Cat";
 	std::cout << "Cat default constructor" << std::endl;
 	return ;
 }
 
-Cat::Cat( Cat const & other ) : Animal()
+Cat::Cat( Cat const & other ) : Animal(), _brain( new Brain() )
 {
-	*this = other;
 	std::cout << "Cat copy constructor" << std::endl;
+	*this = other;
 	return ;
 }
 
 Cat::~Cat( void )
 {
 	std::cout << "Cat destructor" << std::endl;
+	delete _brain;
 	return ;
 }
 
 Cat&	Cat::operator=( Cat const & rhs )
 {
-	this->_type = rhs.getType();
 	std::cout << "Cat assignment operator overload" << std::endl;
+	this->_type = rhs.getType();
+	*( this->_brain ) = *( rhs.getBrain() );
 	return ( *this );
+}
+
+Animal&	Cat::operator=( Animal const & rhs )
+{
+	std::cout << "Catanimal assignment operator overload" << std::endl;
+	this->_type = rhs.getType();
+	*( this->_brain ) = *( rhs.getBrain() );
+	return ( *this );
+}
+
+Brain*	Cat::getBrain( void ) const
+{
+	return ( this->_brain );
 }
 
 void	Cat::makeSound( void ) const
