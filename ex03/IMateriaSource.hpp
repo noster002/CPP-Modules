@@ -6,12 +6,13 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 12:38:36 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/06 14:01:51 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:36:40 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
 # define IMATERIASOURCE_HPP
+# include "AMateria.hpp"
 
 class	IMateriaSource
 {

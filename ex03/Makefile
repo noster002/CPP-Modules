@@ -2,7 +2,7 @@ CC			= c++
 CFLAGS		= -Wall -Werror -Wextra -std=c++98
 RM			= rm -f
 NAME		= a.out
-SRC			= main.cpp
+SRC			= main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ			= $(SRC:.cpp=.o)
 
 all:		$(NAME)
