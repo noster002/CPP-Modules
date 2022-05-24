@@ -6,7 +6,7 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 09:35:44 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/20 15:41:48 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/24 10:05:04 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,13 +294,6 @@ void				ConvertType::_convertFromDouble( void )
 		this->_convertibleMask += ConvertType::_intConvertible;
 	else
 		this->_i = static_cast<int>( this->_d );
-	if ( ( this->_d != std::numeric_limits<double>::infinity() && \
-		this->_d != -std::numeric_limits<double>::infinity() && \
-		this->_d == this->_d ) && \
-		( this->_d > std::numeric_limits<float>::max() || \
-		this->_d < -std::numeric_limits<float>::max() ) )
-		this->_convertibleMask += ConvertType::_floatConvertible;
-	else
-		this->_f = static_cast<float>( this->_d );
+	this->_f = static_cast<float>( this->_d );
 	return ;
 }
