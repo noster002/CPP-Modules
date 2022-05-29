@@ -6,7 +6,7 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:08:46 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/25 17:57:15 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:05:44 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,39 @@ void			Span::addNumber( int num )
 	return ;
 }
 
-unsigned int	Span::shortestSpan( void ) const
+void			Span::randomFill( void )
+{
+	srand( time( NULL ) );
+	while ( this->size() < this->maxSize() )
+		addNumber( rand() % ( this->maxSize() * 100 ) );
+	return ;
+}
+
+void			Span::appendIteratorRange( std::vector<int>::iterator begin, \
+											std::vector<int>::iterator end )
+{
+	std::vector<int>	append( begin, end );
+
+	if ( append.size() + this->size() > this->maxSize() )
+		throw std::out_of_range( "Trying to access Span instance: out of bounds" );
+	copy( append.begin(), append.end(), std::back_inserter( this->_storage ) );
+	return ;
+}
+
+int				Span::shortestSpan( void ) const
 {
 	if ( this->size() <= 1 )
 		throw std::logic_error( "Span instance too short for comparison" );
 
 	std::vector<int>			tmp = this->_storage;
 	std::vector<int>::iterator	it;
-	unsigned int				dif;
+	int							dif;
 
 	std::sort( tmp.begin(), tmp.end() );
 	dif = abs( *( tmp.begin() ) - *( tmp.begin() + 1 ) );
 	if ( tmp.size() == 2 )
 		return ( dif );
-	for ( it = ( tmp.begin() + 1 ); it < tmp.end(); ++it )
+	for ( it = ( tmp.begin() + 1 ); it != ( tmp.end() - 1 ); ++it )
 	{
 		if ( dif > abs( *( it ) - *( it + 1 ) ) )
 			dif = abs( *( it ) - *( it + 1 ) );
@@ -81,14 +100,25 @@ unsigned int	Span::shortestSpan( void ) const
 	return ( dif );
 }
 
-unsigned int	Span::longestSpan( void ) const
+int				Span::longestSpan( void ) const
 {
 	if ( this->size() <= 1 )
 		throw std::logic_error( "Span instance too short for comparison" );
 
 	std::vector<int>	tmp = this->_storage;
-	unsigned int		dif = \
+	int					dif = \
 		*( std::max_element( tmp.begin(), tmp.end() ) ) - \
 		*( std::min_element( tmp.begin(), tmp.end() ) );
 	return ( dif );
+}
+
+std::ostream&	operator<<( std::ostream& out, Span const & rhs )
+{
+	unsigned int	longest = rhs.longestSpan();
+	unsigned int	shortest = rhs.shortestSpan();
+
+	out << "Instance of Span class of max size " << rhs.maxSize() \
+		<< ", size " << rhs.size() << ", with longest span " << longest \
+		<< " and shortest span " << shortest;
+	return ( out );
 }

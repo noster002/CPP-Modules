@@ -6,16 +6,19 @@
 /*   By: nosterme <nosterme@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:53:24 by nosterme          #+#    #+#             */
-/*   Updated: 2022/05/25 17:53:57 by nosterme         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:30:48 by nosterme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 # include <vector>
+# include <iterator>
 # include <stdexcept>
 # include <algorithm>
 # include <cstdlib>
+# include <ctime>
+# include <iostream>
 
 class	Span
 {
@@ -33,8 +36,12 @@ class	Span
 		unsigned int		maxSize( void ) const;
 
 		void				addNumber( int num );
-		unsigned int		shortestSpan( void ) const;
-		unsigned int		longestSpan( void ) const;
+		void				randomFill( void );
+		void				appendIteratorRange( std::vector<int>::iterator begin, \
+												std::vector<int>::iterator end );
+
+		int					shortestSpan( void ) const;
+		int					longestSpan( void ) const;
 
 	private:
 
@@ -42,5 +49,7 @@ class	Span
 		std::vector<int>	_storage;
 
 };
+
+std::ostream&	operator<<( std::ostream& out, Span const & rhs );
 
 #endif
