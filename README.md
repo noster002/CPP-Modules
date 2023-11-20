@@ -7,7 +7,7 @@ Each module contains multiple exercises to learn about various topics.
 
 Modules   | Topics
  -------- | --------
-Module 00 | Namespaces, classes, member functions, stdio streams, initialization lists, static, const + basics
+Module 00 | Namespaces, classes, member functions, stdio streams, initialization lists, static, const, etc.
 Module 01 | Memory allocation, pointers to members, references, switch statement
 Module 02 | Ad-hoc polymorphism, operator overloading, Orthodox Canonical class form
 Module 03 | Inheritance
